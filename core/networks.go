@@ -76,7 +76,7 @@ var networks = map[Network]NetworkConfig{
 		GenesisForkVersion:     phase0.Version{0x10, 0x00, 0x00, 0x38},
 		GenesisValidatorsRoot:  "009135decd0526373af37416a71de00d85a9c2dd1a4d5d8b42a21fc883770165",
 		DepositContractAddress: "0x00000000219ab540356cbb839cbe05303d7705fa",
-		MinGenesisTime:         1746533419,
+		MinGenesisTime:         1746539606,
 	},
 }
 
