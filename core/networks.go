@@ -105,8 +105,7 @@ func (n Network) GenesisForkVersion() phase0.Version {
 	if cfg, exists := networks[n]; exists {
 		return cfg.GenesisForkVersion
 	}
-	logrus.WithField("network", n).Fatal("undefined network")
-	return phase0.Version{}
+	panic(fmt.Sprintf("undefined network %s", n))
 }
 
 // GenesisValidatorsRoot returns the genesis validators root of the network.
@@ -123,8 +122,7 @@ func (n Network) GenesisValidatorsRoot() phase0.Root {
 		copy(root[:], rootBytes)
 		return root
 	}
-	logrus.WithField("network", n).Fatal("undefined network")
-	return root
+	panic(fmt.Sprintf("undefined network %s", n))
 }
 
 // DepositContractAddress returns the deposit contract address of the network.
@@ -132,8 +130,8 @@ func (n Network) DepositContractAddress() string {
 	if cfg, exists := networks[n]; exists {
 		return cfg.DepositContractAddress
 	}
-	logrus.WithField("network", n).Fatal("undefined network")
-	return ""
+	panic(fmt.Sprintf("undefined network %s", n))
+
 }
 
 // MinGenesisTime returns the min genesis time of the network.
@@ -141,8 +139,7 @@ func (n Network) MinGenesisTime() uint64 {
 	if cfg, exists := networks[n]; exists {
 		return cfg.MinGenesisTime
 	}
-	logrus.WithField("network", n).Fatal("undefined network")
-	return 0
+	panic(fmt.Sprintf("undefined network %s", n))
 }
 
 // FullPath returns the full path of the network.
