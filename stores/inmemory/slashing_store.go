@@ -2,6 +2,8 @@ package inmemory
 
 import (
 	"encoding/hex"
+	"encoding/json"
+	"fmt"
 
 	"github.com/attestantio/go-eth2-client/spec/phase0"
 	"github.com/pkg/errors"
@@ -16,6 +18,9 @@ func (store *InMemStore) SaveHighestAttestation(pubKey []byte, attestation *phas
 	if attestation == nil {
 		return errors.New("attestation data could not be nil")
 	}
+	d, _ := json.Marshal(attestation)
+
+	fmt.Printf("DEBUGGING_STUFF: saved attestation data %v", d)
 
 	store.highestAttestationLock.Lock()
 	store.highestAttestation[hex.EncodeToString(pubKey)] = attestation
